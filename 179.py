@@ -3,12 +3,7 @@ class Solution:
     # @return a string
     def largestNumber(self, num):
         def cmp(x, y):
-            a, b = int(str(x) + str(y)), int(str(y) + str(x))
-            if a > b : 
-                return -1
-            elif a < b : 
-                return 1
-            else:
-                return 0
+            return -1 if str(x) + str(y) > str(y) + str(x) else 1
+        num = map(str, num)
         num.sort(cmp)
-        return str(int("".join(map(str, num))))
+        return "".join(num).lstrip('0') or '0'
